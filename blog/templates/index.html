@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Simple Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/darkly/bootstrap.min.css"
+          integrity="sha384-w+8Gqjk9Cuo6XH9HKHG5t5I1VR4YBNdPt/29vwgfZR485eoEJZ8rJRbm3TR32P6k" crossorigin="anonymous">
+    <style>
+        .article {
+            background-color: #D3D3D3;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            color: black;
+            padding: 20px;
+        }
+
+        .article-title {
+            color: #184287;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .article-body {
+            text-align: justify;
+        }
+
+        .article-footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="page-bootswatch">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <a class="navbar-brand">Simple Blog</a>
+</nav>
+<div class="container">
+    {% for post in rest_list %}
+        <div class="article">
+            <div class="article-title"><a href="#">{{ post.title }}</a></div>
+            <div class="article-body">{{ post.textArticle|truncatewords:150 }}</div>
+            <div class="article-footer">
+                <div> Like: {{ post.likeIt }}</div>
+                <div> Date published: {{ post.datePub }} </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>
